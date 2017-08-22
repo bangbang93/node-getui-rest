@@ -11,6 +11,8 @@ const MASTER_SECRET = 'V5uF0Mkc7p6n2VMhJlFIb1'
 
 const getui = new Getui(APP_ID, APP_KEY, MASTER_SECRET)
 
+const CID = '4c61ba55399c69c7d92ec133dda37ba7'
+
 before(function () {
   return getui.auth();
 })
@@ -31,5 +33,13 @@ describe('node-getui-rest', function () {
       transmission_content: 'some body',
     },
     '4c61ba55399c69c7d92ec133dda37ba7')
+  })
+  it('set tag', async function () {
+    const res = await getui.setTags(CID, ['吴克']);
+    console.log(res)
+  });
+  it('get tag', async function () {
+    const tags = await getui.getTags(CID);
+    console.log(tags)
   })
 })
