@@ -231,7 +231,7 @@ class Getui extends EventEmitter {
 
   /**
    * 绑定别名
-   * @param {array<object>} aliasList[]
+   * @param {array<object>} aliasList
    * @param {string} aliasList[].cid cid
    * @param {string} aliasList[].alias 别名
    * @returns {Promise}

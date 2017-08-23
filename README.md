@@ -43,7 +43,7 @@
     * [.pushApp(message, template, apnsInfo, [condition], [requestId])](#Getui+pushApp) ⇒ <code>Promise</code>
     * [.stopTask(taskId)](#Getui+stopTask) ⇒ <code>Promise</code>
     * [.pushSingleBatch(msgList)](#Getui+pushSingleBatch) ⇒ <code>Promise</code>
-    * [.bindAlias(aliasList[)](#Getui+bindAlias) ⇒ <code>Promise</code>
+    * [.bindAlias(aliasList)](#Getui+bindAlias) ⇒ <code>Promise</code>
     * [.queryCid(alias)](#Getui+queryCid) ⇒ <code>Promise</code>
     * [.queryAlias(cid)](#Getui+queryAlias) ⇒ <code>Promise</code>
     * [.unbindAlias(cid, alias)](#Getui+unbindAlias) ⇒ <code>Promise</code>
@@ -208,14 +208,14 @@ toapp群推
 
 <a name="Getui+bindAlias"></a>
 
-### getui.bindAlias(aliasList[) ⇒ <code>Promise</code>
+### getui.bindAlias(aliasList) ⇒ <code>Promise</code>
 绑定别名
 
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| aliasList[ | <code>array.&lt;object&gt;</code> |  |
+| aliasList | <code>array.&lt;object&gt;</code> |  |
 | aliasList[].cid | <code>string</code> | cid |
 | aliasList[].alias | <code>string</code> | 别名 |
 
