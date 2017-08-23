@@ -58,6 +58,7 @@ class Getui extends EventEmitter {
   /**
    * 认证
    * @throws {Error} auth failed
+   * @fires Getui#ready
    * @returns {Promise.<void>}
    */
   async auth() {
