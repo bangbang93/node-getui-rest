@@ -25,6 +25,11 @@ const randomstring = require('randomstring')
  */
 
 /**
+ * 认证完成，准备就绪
+ * @event Getui#ready
+ */
+
+/**
  * 个推RestAPI SDK
  *
  * @extends EventEmitter

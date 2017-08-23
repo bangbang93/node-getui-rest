@@ -62,6 +62,7 @@
     * [.queryUserCount(condition)](#Getui+queryUserCount) ⇒ <code>Promise</code>
     * [.queryBiTags()](#Getui+queryBiTags) ⇒ <code>Promise</code>
     * [.getFeedbackUsers(taskId, cids)](#Getui+getFeedbackUsers) ⇒ <code>Promise</code>
+    * ["ready"](#Getui+event_ready)
 
 <a name="new_Getui_new"></a>
 
@@ -91,7 +92,7 @@
 
 - <code>Error</code> auth failed
 
-**Emits**: <code>Getui#event:ready</code>  
+**Emits**: [<code>ready</code>](#Getui+event_ready)  
 <a name="Getui+unauth"></a>
 
 ### getui.unauth() ⇒ <code>Promise.&lt;void&gt;</code>
@@ -412,6 +413,12 @@ toapp群推
 | taskId | <code>string</code> | 
 | cids | <code>string</code> | 
 
+<a name="Getui+event_ready"></a>
+
+### "ready"
+认证完成，准备就绪
+
+**Kind**: event emitted by [<code>Getui</code>](#Getui)  
 <a name="<object>"></a>
 
 ## <object>
