@@ -20,7 +20,6 @@ before(function () {
 describe('node-getui-rest', function () {
   it('single push', function () {
     return getui.pushSingle({
-      appkey: APP_KEY,
       is_offline: false,
       msgtype: 'notification',
     }, {

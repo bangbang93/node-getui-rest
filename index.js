@@ -11,8 +11,8 @@ const ms = require('ms')
 /**
  * @typedef {object} Message
  * @property {boolean} is_offline 是否存为离线消息
- * @property {number} offline_expire_time 离线时间
- * @property {number} push_network_type 选择推送消息使用网络类型，0：不限制，1：wifi
+ * @property {number} [offline_expire_time] 离线时间
+ * @property {number} [push_network_type] 选择推送消息使用网络类型，0：不限制，1：wifi
  * @property {string} msgtype 消息应用类型，可选项：notification、link、notypopload、transmission
  */
 
@@ -213,7 +213,7 @@ class Getui extends EventEmitter {
 
   /**
    * 群推
-   * @param {array} cidList cidList
+   * @param {string[]} cidList cidList
    * @param {string} taskId 保存消息共同体的返回结果
    * @param {boolean} [needDetail] 默认值:false，是否需要返回每个CID的状态
    * @returns {Promise}
@@ -228,7 +228,7 @@ class Getui extends EventEmitter {
 
   /**
    * 群推alias
-   * @param {array} aliasList alias
+   * @param {string[]} aliasList alias
    * @param {string} taskId 保存消息共同体的返回结果
    * @param {boolean} [needDetail] 默认值:false，是否需要返回每个CID的状态
    * @returns {Promise}
@@ -273,7 +273,7 @@ class Getui extends EventEmitter {
 
   /**
    * 批量单推
-   * @param {array<object>} msgList
+   * @param {object[]} msgList
    * @returns {Promise}
    */
   pushSingleBatch(msgList) {
@@ -287,7 +287,7 @@ class Getui extends EventEmitter {
 
   /**
    * 绑定别名
-   * @param {array<object>} aliasList
+   * @param {object[]} aliasList
    * @param {string} aliasList[].cid cid
    * @param {string} aliasList[].alias 别名
    * @returns {Promise}
@@ -343,7 +343,7 @@ class Getui extends EventEmitter {
   /**
    * 设置tag
    * @param {string} cid
-   * @param {array<string>} tagList
+   * @param {string[]} tagList
    * @returns {Promise}
    */
   setTags(cid, tagList) {
@@ -395,7 +395,7 @@ class Getui extends EventEmitter {
 
   /**
    * 获取推送结果
-   * @param {array<string>} taskIdList
+   * @param {string[]} taskIdList
    * @returns {Promise}
    */
   pushResult(taskIdList) {
@@ -425,7 +425,7 @@ class Getui extends EventEmitter {
   /**
    * 应用角标设置接口(仅iOS)
    * @param {number} badge
-   * @param {array<string>} cids
+   * @param {string[]} cids
    * @returns {Promise}
    */
   setBadge(badge, cids) {

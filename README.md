@@ -456,6 +456,13 @@ toapp群推
 | style.type | <code>number</code> | 样式类型，0-原生，1-个推样式，4-纯图，6-展开通知 |
 | style.text | <code>string</code> | text |
 | style.title | <code>string</code> | title |
+| style.logo | <code>string</code> | logo |
+| style.logourl | <code>string</code> | logoUrl |
+| style.is_ring} | <code>boolean</code> | 是否响铃 |
+| style.is_vibrate} | <code>boolean</code> | 是否震动 |
+| style.is_clearable} | <code>boolean</code> | 是否可清除 |
+| duration_begin | <code>string</code> | 设定展示开始时间，格式为yyyy-MM-dd HH:mm:ss |
+| duration_end | <code>string</code> | 设定展示结束时间，格式为yyyy-MM-dd HH:mm:ss |
 | transmission_type | <code>boolean</code> | 是否透传 |
 | transmission_content | <code>string</code> | 透传内容 |
 
@@ -479,22 +486,23 @@ toapp群推
 
 | Name | Type | Description |
 | --- | --- | --- |
-| alert | <code>object</code> | 消息 |
-| alert.body | <code>string</code> | 通知文本消息 |
-| alert.action-loc-key | <code>string</code> | （用于多语言支持）指定执行按钮所使用的Localizable.strings |
-| alert.loc-key | <code>string</code> | （用于多语言支持）指定Localizable.strings文件中相应的key |
-| alert.loc-args | <code>Array.&lt;string&gt;</code> | 如果loc-key中使用了占位符，则在loc-args中指定各参数 |
-| alert.launch-image | <code>string</code> | 指定启动界面图片名 |
-| alert.title | <code>string</code> | 通知标题 |
-| alert.titile-loc-key | <code>string</code> | (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本 |
-| alert.title-loc-args | <code>Array.&lt;string&gt;</code> | 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本 |
-| alert.subtitle | <code>string</code> | 通知子标题,仅支持iOS8.2以上版本 |
-| alert.subtitle-loc-key | <code>string</code> | 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本 |
-| alert.subtitle-loc-args | <code>string</code> | 当前本地化子标题内容中需要置换的变量参数 ,仅支持iOS8.2以上版本 |
-| autoBadge | <code>string</code> | 用于计算icon上显示的数字，还可以实现显示数字的自动增减，如“+1”、 “-1”、 “1” 等，计算结果将覆盖badge |
-| sound | <code>string</code> | 通知铃声文件名，无声设置为“com.gexin.ios.silence” |
-| content-available | <code>number</code> | 推送直接带有透传数据 |
-| category | <code>string</code> | 在客户端通知栏触发特定的action和button显示 |
+| aps | <code>object</code> | apple push service |
+| aps.alert | <code>object</code> | 消息 |
+| aps.alert.body | <code>string</code> | 通知文本消息 |
+| aps.alert.action-loc-key | <code>string</code> | （用于多语言支持）指定执行按钮所使用的Localizable.strings |
+| aps.alert.loc-key | <code>string</code> | （用于多语言支持）指定Localizable.strings文件中相应的key |
+| aps.alert.loc-args | <code>Array.&lt;string&gt;</code> | 如果loc-key中使用了占位符，则在loc-args中指定各参数 |
+| aps.alert.launch-image | <code>string</code> | 指定启动界面图片名 |
+| aps.alert.title | <code>string</code> | 通知标题 |
+| aps.alert.titile-loc-key | <code>string</code> | (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本 |
+| aps.alert.title-loc-args | <code>Array.&lt;string&gt;</code> | 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本 |
+| aps.alert.subtitle | <code>string</code> | 通知子标题,仅支持iOS8.2以上版本 |
+| aps.alert.subtitle-loc-key | <code>string</code> | 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本 |
+| aps.alert.subtitle-loc-args | <code>string</code> | 当前本地化子标题内容中需要置换的变量参数 ,仅支持iOS8.2以上版本 |
+| aps.autoBadge | <code>string</code> | 用于计算icon上显示的数字，还可以实现显示数字的自动增减，如“+1”、 “-1”、 “1” 等，计算结果将覆盖badge |
+| aps.sound | <code>string</code> | 通知铃声文件名，无声设置为“com.gexin.ios.silence” |
+| aps.content-available | <code>number</code> | 推送直接带有透传数据 |
+| aps.category | <code>string</code> | 在客户端通知栏触发特定的action和button显示 |
 | multimedia | <code>Array.&lt;object&gt;</code> | 多媒体 |
 | multimedia[].url | <code>string</code> | 多媒体资源地址 |
 | multimedia[].type | <code>number</code> | 资源类型（1.图片，2.音频， 3.视频） |
