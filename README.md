@@ -22,6 +22,8 @@
 <dd></dd>
 <dt><a href="#Condition">Condition</a> : <code>object</code></dt>
 <dd></dd>
+<dt><a href="#APNsInfo">APNsInfo</a> : <code>object</code></dt>
+<dd></dd>
 </dl>
 
 <a name="Getui"></a>
@@ -116,7 +118,7 @@
 | message | [<code>Message</code>](#Message) |  |
 | template | [<code>Notification</code>](#Notification) |  |
 | cid | <code>string</code> | cid |
-| apnsInfo | <code>string</code> | apns的json，ios需要 |
+| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
 
 <a name="Getui+pushSingleAlias"></a>
@@ -132,7 +134,7 @@
 | message | [<code>Message</code>](#Message) |  |
 | template | [<code>Notification</code>](#Notification) |  |
 | alias | <code>string</code> | alias |
-| apnsInfo | <code>string</code> | apns的json，ios需要 |
+| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
 
 <a name="Getui+saveListBody"></a>
@@ -146,7 +148,7 @@
 | --- | --- | --- |
 | message | [<code>Message</code>](#Message) |  |
 | template | [<code>Notification</code>](#Notification) |  |
-| apnsInfo | <code>string</code> | apns的json，ios需要 |
+| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
 | [taskName] | <code>string</code> | 任务名称 |
 
 <a name="Getui+toList"></a>
@@ -186,7 +188,7 @@ toapp群推
 | --- | --- | --- |
 | message | [<code>Message</code>](#Message) |  |
 | template | [<code>Notification</code>](#Notification) |  |
-| apnsInfo | <code>string</code> |  |
+| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) |  |
 | [condition] | [<code>Condition</code>](#Condition) | 筛选目标用户条件 |
 | [requestId] | <code>string</code> |  |
 
@@ -439,7 +441,8 @@ toapp群推
 | --- | --- | --- |
 | is_offline | <code>boolean</code> | 是否存为离线消息 |
 | offline_expire_time | <code>number</code> | 离线时间 |
-| msgtype | <code>string</code> | 消息类型 |
+| push_network_type | <code>number</code> | 选择推送消息使用网络类型，0：不限制，1：wifi |
+| msgtype | <code>string</code> | 消息应用类型，可选项：notification、link、notypopload、transmission |
 
 <a name="Notification"></a>
 
@@ -467,4 +470,33 @@ toapp群推
 | key | <code>string</code> | 筛选条件类型名称(省市region,手机类型phonetype,用户标签tag) |
 | values | <code>string</code> | 筛选参数 |
 | opt_type | <code>string</code> | 筛选参数的组合，0:取参数并集or，1：交集and，2：相当与not in {参数1，参数2，....} |
+
+<a name="APNsInfo"></a>
+
+## APNsInfo : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| alert | <code>object</code> | 消息 |
+| alert.body | <code>string</code> | 通知文本消息 |
+| alert.action-loc-key | <code>string</code> | （用于多语言支持）指定执行按钮所使用的Localizable.strings |
+| alert.loc-key | <code>string</code> | （用于多语言支持）指定Localizable.strings文件中相应的key |
+| alert.loc-args | <code>Array.&lt;string&gt;</code> | 如果loc-key中使用了占位符，则在loc-args中指定各参数 |
+| alert.launch-image | <code>string</code> | 指定启动界面图片名 |
+| alert.title | <code>string</code> | 通知标题 |
+| alert.titile-loc-key | <code>string</code> | (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本 |
+| alert.title-loc-args | <code>Array.&lt;string&gt;</code> | 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本 |
+| alert.subtitle | <code>string</code> | 通知子标题,仅支持iOS8.2以上版本 |
+| alert.subtitle-loc-key | <code>string</code> | 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本 |
+| alert.subtitle-loc-args | <code>string</code> | 当前本地化子标题内容中需要置换的变量参数 ,仅支持iOS8.2以上版本 |
+| autoBadge | <code>string</code> | 用于计算icon上显示的数字，还可以实现显示数字的自动增减，如“+1”、 “-1”、 “1” 等，计算结果将覆盖badge |
+| sound | <code>string</code> | 通知铃声文件名，无声设置为“com.gexin.ios.silence” |
+| content-available | <code>number</code> | 推送直接带有透传数据 |
+| category | <code>string</code> | 在客户端通知栏触发特定的action和button显示 |
+| multimedia | <code>Array.&lt;object&gt;</code> | 多媒体 |
+| multimedia[].url | <code>string</code> | 多媒体资源地址 |
+| multimedia[].type | <code>number</code> | 资源类型（1.图片，2.音频， 3.视频） |
+| multimedia[].only_wifi | <code>boolean</code> | 是否只在wifi环境下加载，如果设置成true,但未使用wifi时，会展示成普通通知 |
 
