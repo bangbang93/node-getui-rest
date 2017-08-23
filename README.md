@@ -16,9 +16,9 @@
 ## Typedefs
 
 <dl>
-<dt><a href="#<object>"><object></a></dt>
+<dt><a href="#Message">Message</a> : <code>object</code></dt>
 <dd></dd>
-<dt><a href="#<object>"><object></a></dt>
+<dt><a href="#Notification">Notification</a> : <code>object</code></dt>
 <dd></dd>
 </dl>
 
@@ -109,8 +109,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>Message</code> | [Message](Message) |
-| template | <code>Notification</code> | [Notification](Notification) |
+| message | [<code>Message</code>](#Message) | [Message](#Message) |
+| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
 | cid | <code>string</code> | cid |
 | apnsInfo | <code>string</code> | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
@@ -125,8 +125,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>Message</code> | [Message](Message) |
-| template | <code>Notification</code> | [Notification](Notification) |
+| message | [<code>Message</code>](#Message) | [Message](#Message) |
+| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
 | alias | <code>string</code> | alias |
 | apnsInfo | <code>string</code> | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
@@ -140,8 +140,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>Message</code> | [Message](Message) |
-| template | <code>Notification</code> | [Notification](Notification) |
+| message | [<code>Message</code>](#Message) | [Message](#Message) |
+| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
 | apnsInfo | <code>string</code> | apns的json，ios需要 |
 | [taskName] | <code>string</code> | 任务名称 |
 
@@ -180,8 +180,8 @@ toapp群推
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | <code>Message</code> | [Message](Message) |
-| template | <code>Notification</code> | [Notification](Notification) |
+| message | [<code>Message</code>](#Message) | [Message](#Message) |
+| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
 | apnsInfo | <code>string</code> |  |
 | [condition] | <code>object</code> | 筛选目标用户条件，参考下面的condition说明 |
 | [requestId] | <code>string</code> |  |
@@ -419,9 +419,9 @@ toapp群推
 认证完成，准备就绪
 
 **Kind**: event emitted by [<code>Getui</code>](#Getui)  
-<a name="<object>"></a>
+<a name="Message"></a>
 
-## <object>
+## Message : <code>object</code>
 **Kind**: global typedef  
 **Properties**
 
@@ -431,9 +431,9 @@ toapp群推
 | offline_expire_time | <code>number</code> | 离线时间 |
 | msgtype | <code>string</code> | 消息类型 |
 
-<a name="<object>"></a>
+<a name="Notification"></a>
 
-## <object>
+## Notification : <code>object</code>
 **Kind**: global typedef  
 **Properties**
 

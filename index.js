@@ -8,14 +8,14 @@ const sha256 = require('./helper/hash').sha256
 const randomstring = require('randomstring')
 
 /**
- * @typedef <object> Message
+ * @typedef {object} Message
  * @property {boolean} is_offline 是否存为离线消息
  * @property {number} offline_expire_time 离线时间
  * @property {string} msgtype 消息类型
  */
 
 /**
- * @typedef <object> Notification
+ * @typedef {object} Notification
  * @property {object} style 样式
  * @property {number} style.type 样式类型，0-原生，1-个推样式，4-纯图，6-展开通知
  * @property {string} style.text text
