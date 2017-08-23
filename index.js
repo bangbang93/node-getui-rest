@@ -50,7 +50,7 @@ const ms = require('ms')
  * @property {string[]} [aps.alert.loc-args] 如果loc-key中使用了占位符，则在loc-args中指定各参数
  * @property {string} [aps.alert.launch-image] 指定启动界面图片名
  * @property {string} [aps.alert.title] 通知标题
- * @property {string} [aps.alert.titile-loc-key] (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本
+ * @property {string} [aps.alert.title-loc-key] (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本
  * @property {string[]} [aps.alert.title-loc-args] 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本
  * @property {string} [aps.alert.subtitle] 通知子标题,仅支持iOS8.2以上版本
  * @property {string} [aps.alert.subtitle-loc-key] 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本
