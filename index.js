@@ -145,17 +145,14 @@ class Getui extends EventEmitter {
   /**
    * 单推
    * @param {Message} message
-   * @param {Notification} template
+   * @param {Notification|null} template
    * @param {string} cid cid
-   * @param {APNsInfo} apnsInfo apns的json，ios需要
+   * @param {APNsInfo} [apnsInfo] apns的json，ios需要
    * @param {string} [requestId] requestId
    * @returns {Promise<object>} 接口返回的json
    */
   pushSingle(message, template, cid, apnsInfo, requestId = getRequestId()) {
     message.appkey = message.appkey || this._appKey
-    if (typeof apnsInfo === 'object') {
-      apnsInfo = JSON.stringify(apnsInfo);
-    }
     const body = {
       message,
       cid,
@@ -169,17 +166,14 @@ class Getui extends EventEmitter {
   /**
    * 单推给alias
    * @param {Message} message
-   * @param {Notification} template
+   * @param {Notification|null} template
    * @param {string} alias alias
-   * @param {APNsInfo} apnsInfo apns的json，ios需要
+   * @param {APNsInfo} [apnsInfo] apns的json，ios需要
    * @param {string} [requestId] requestId
    * @returns {Promise<object>} 接口返回的json
    */
   pushSingleAlias(message, template, alias, apnsInfo, requestId = getRequestId()) {
     message.appkey = message.appkey || this._appKey
-    if (typeof apnsInfo === 'object') {
-      apnsInfo = JSON.stringify(apnsInfo);
-    }
     const body = {
       message,
       alias,
@@ -193,8 +187,8 @@ class Getui extends EventEmitter {
   /**
    * 保存消息共同体
    * @param {Message} message
-   * @param {Notification} template
-   * @param {APNsInfo} apnsInfo apns的json，ios需要
+   * @param {Notification|null} template
+   * @param {APNsInfo} [apnsInfo] apns的json，ios需要
    * @param {string} [taskName] 任务名称
    * @returns {Promise}
    */
@@ -242,8 +236,8 @@ class Getui extends EventEmitter {
   /**
    * toapp群推
    * @param {Message} message
-   * @param {Notification} template
-   * @param {APNsInfo} apnsInfo
+   * @param {Notification|null} template
+   * @param {APNsInfo} [apnsInfo]
    * @param {Condition} [condition] 筛选目标用户条件
    * @param {string} [requestId]
    * @returns {Promise}
