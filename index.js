@@ -25,6 +25,13 @@ const randomstring = require('randomstring')
  */
 
 /**
+ * @typedef {object} Condition
+ * @property {string} key 筛选条件类型名称(省市region,手机类型phonetype,用户标签tag)
+ * @property {string} values 筛选参数
+ * @property {string} opt_type 筛选参数的组合，0:取参数并集or，1：交集and，2：相当与not in {参数1，参数2，....}
+ */
+
+/**
  * 认证完成，准备就绪
  * @event Getui#ready
  */
@@ -200,7 +207,7 @@ class Getui extends EventEmitter {
    * @param {Message} message
    * @param {Notification} template
    * @param {string} apnsInfo
-   * @param {object} [condition] 筛选目标用户条件，参考下面的condition说明
+   * @param {Condition} [condition] 筛选目标用户条件
    * @param {string} [requestId]
    * @returns {Promise}
    */
@@ -408,7 +415,7 @@ class Getui extends EventEmitter {
 
   /**
    * 按条件查询用户数
-   * @param {object} condition
+   * @param {Condition} condition
    * @returns {Promise}
    */
   queryUserCount(condition) {

@@ -20,6 +20,8 @@
 <dd></dd>
 <dt><a href="#Notification">Notification</a> : <code>object</code></dt>
 <dd></dd>
+<dt><a href="#Condition">Condition</a> : <code>object</code></dt>
+<dd></dd>
 </dl>
 
 <a name="Getui"></a>
@@ -183,7 +185,7 @@ toapp群推
 | message | [<code>Message</code>](#Message) |  |
 | template | [<code>Notification</code>](#Notification) |  |
 | apnsInfo | <code>string</code> |  |
-| [condition] | <code>object</code> | 筛选目标用户条件，参考下面的condition说明 |
+| [condition] | [<code>Condition</code>](#Condition) | 筛选目标用户条件 |
 | [requestId] | <code>string</code> |  |
 
 <a name="Getui+stopTask"></a>
@@ -393,7 +395,7 @@ toapp群推
 
 | Param | Type |
 | --- | --- |
-| condition | <code>object</code> | 
+| condition | [<code>Condition</code>](#Condition) | 
 
 <a name="Getui+queryBiTags"></a>
 
@@ -445,4 +447,16 @@ toapp群推
 | style.title | <code>string</code> | title |
 | transmission_type | <code>boolean</code> | 是否透传 |
 | transmission_content | <code>string</code> | 透传内容 |
+
+<a name="Condition"></a>
+
+## Condition : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | 筛选条件类型名称(省市region,手机类型phonetype,用户标签tag) |
+| values | <code>string</code> | 筛选参数 |
+| opt_type | <code>string</code> | 筛选参数的组合，0:取参数并集or，1：交集and，2：相当与not in {参数1，参数2，....} |
 
