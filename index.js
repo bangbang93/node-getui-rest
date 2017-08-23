@@ -9,14 +9,16 @@ const randomstring = require('randomstring')
 
 /**
  * 个推RestAPI SDK
+ *
  * @extends EventEmitter
  */
-class Getui extends EventEmitter{
+class Getui extends EventEmitter {
   /**
    * 初始化个推RestAPI
-   * @param appId
-   * @param appKey
-   * @param masterSecret
+   *
+   * @param {string} appId
+   * @param {string} appKey
+   * @param {string} masterSecret
    */
   constructor (appId, appKey, masterSecret) {
     super()
@@ -26,7 +28,7 @@ class Getui extends EventEmitter{
   }
 
   /**
-   *
+   * 等待认证完成
    * @returns {Promise}
    */
   async waitAuth() {
@@ -36,6 +38,10 @@ class Getui extends EventEmitter{
     })
   }
 
+  /**
+   * 认证
+   * @returns {Promise.<void>}
+   */
   async auth() {
     const timestamp = Date.now();
     const sign = sha256(`${this._appKey}${timestamp}${this._masterSecret}`)
