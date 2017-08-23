@@ -6,6 +6,7 @@ const EventEmitter = require('events').EventEmitter
 const rp = require('request-promise');
 const sha256 = require('./helper/hash').sha256
 const randomstring = require('randomstring')
+const ms = require('ms')
 
 /**
  * @typedef {object} Message
@@ -37,6 +38,11 @@ const randomstring = require('randomstring')
  */
 
 /**
+ * 重新获取了token
+ * @event Getui#refresh-token
+ */
+
+/**
  * 个推RestAPI SDK
  *
  * @extends EventEmitter
@@ -48,12 +54,14 @@ class Getui extends EventEmitter {
    * @param {string} appId
    * @param {string} appKey
    * @param {string} masterSecret
+   * @param {string|boolean} [interval=23h] 自动token续期,false禁用
    */
-  constructor (appId, appKey, masterSecret) {
+  constructor (appId, appKey, masterSecret, interval = '23h') {
     super()
     this._appId = appId
     this._appKey = appKey
     this._masterSecret = masterSecret
+    this._interval = interval
   }
 
   /**
@@ -68,7 +76,7 @@ class Getui extends EventEmitter {
   }
 
   /**
-   * 认证
+   * 认证，token有效期24小时
    * @throws {Error} auth failed
    * @fires Getui#ready
    * @returns {Promise.<void>}
@@ -92,6 +100,10 @@ class Getui extends EventEmitter {
     }
     this._authToken = res['auth_token']
     this.emit('ready')
+    if (this._interval) setInterval(async () => {
+      await this.auth()
+      this.emit('refresh-token')
+    },  ms(this._interval))
   }
 
   /**

@@ -33,7 +33,7 @@
 **Extends**: <code>EventEmitter</code>  
 
 * [Getui](#Getui) ⇐ <code>EventEmitter</code>
-    * [new Getui(appId, appKey, masterSecret)](#new_Getui_new)
+    * [new Getui(appId, appKey, masterSecret, [interval])](#new_Getui_new)
     * [.waitAuth()](#Getui+waitAuth) ⇒ <code>Promise</code>
     * [.auth()](#Getui+auth) ⇒ <code>Promise.&lt;void&gt;</code>
     * [.unauth()](#Getui+unauth) ⇒ <code>Promise.&lt;void&gt;</code>
@@ -65,18 +65,20 @@
     * [.queryBiTags()](#Getui+queryBiTags) ⇒ <code>Promise</code>
     * [.getFeedbackUsers(taskId, cids)](#Getui+getFeedbackUsers) ⇒ <code>Promise</code>
     * ["ready"](#Getui+event_ready)
+    * ["refresh-token"](#Getui+event_refresh-token)
 
 <a name="new_Getui_new"></a>
 
-### new Getui(appId, appKey, masterSecret)
+### new Getui(appId, appKey, masterSecret, [interval])
 初始化个推RestAPI
 
 
-| Param | Type |
-| --- | --- |
-| appId | <code>string</code> | 
-| appKey | <code>string</code> | 
-| masterSecret | <code>string</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| appId | <code>string</code> |  |  |
+| appKey | <code>string</code> |  |  |
+| masterSecret | <code>string</code> |  |  |
+| [interval] | <code>string</code> \| <code>boolean</code> | <code>&quot;23h&quot;</code> | 自动token续期,false禁用 |
 
 <a name="Getui+waitAuth"></a>
 
@@ -87,7 +89,7 @@
 <a name="Getui+auth"></a>
 
 ### getui.auth() ⇒ <code>Promise.&lt;void&gt;</code>
-认证
+认证，token有效期24小时
 
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
 **Throws**:
@@ -419,6 +421,12 @@ toapp群推
 
 ### "ready"
 认证完成，准备就绪
+
+**Kind**: event emitted by [<code>Getui</code>](#Getui)  
+<a name="Getui+event_refresh-token"></a>
+
+### "refresh-token"
+重新获取了token
 
 **Kind**: event emitted by [<code>Getui</code>](#Getui)  
 <a name="Message"></a>
