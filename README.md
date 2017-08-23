@@ -39,12 +39,12 @@
     * [.waitAuth()](#Getui+waitAuth) ⇒ <code>Promise</code>
     * [.auth()](#Getui+auth) ⇒ <code>Promise.&lt;void&gt;</code>
     * [.unauth()](#Getui+unauth) ⇒ <code>Promise.&lt;void&gt;</code>
-    * [.pushSingle(message, template, cid, apnsInfo, [requestId])](#Getui+pushSingle) ⇒ <code>Promise.&lt;object&gt;</code>
-    * [.pushSingleAlias(message, template, alias, apnsInfo, [requestId])](#Getui+pushSingleAlias) ⇒ <code>Promise.&lt;object&gt;</code>
-    * [.saveListBody(message, template, apnsInfo, [taskName])](#Getui+saveListBody) ⇒ <code>Promise</code>
+    * [.pushSingle(message, template, cid, [apnsInfo], [requestId])](#Getui+pushSingle) ⇒ <code>Promise.&lt;object&gt;</code>
+    * [.pushSingleAlias(message, template, alias, [apnsInfo], [requestId])](#Getui+pushSingleAlias) ⇒ <code>Promise.&lt;object&gt;</code>
+    * [.saveListBody(message, template, [apnsInfo], [taskName])](#Getui+saveListBody) ⇒ <code>Promise</code>
     * [.toList(cidList, taskId, [needDetail])](#Getui+toList) ⇒ <code>Promise</code>
     * [.toListAlias(aliasList, taskId, [needDetail])](#Getui+toListAlias) ⇒ <code>Promise</code>
-    * [.pushApp(message, template, apnsInfo, [condition], [requestId])](#Getui+pushApp) ⇒ <code>Promise</code>
+    * [.pushApp(message, template, [apnsInfo], [condition], [requestId])](#Getui+pushApp) ⇒ <code>Promise</code>
     * [.stopTask(taskId)](#Getui+stopTask) ⇒ <code>Promise</code>
     * [.pushSingleBatch(msgList)](#Getui+pushSingleBatch) ⇒ <code>Promise</code>
     * [.bindAlias(aliasList)](#Getui+bindAlias) ⇒ <code>Promise</code>
@@ -107,7 +107,7 @@
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
 <a name="Getui+pushSingle"></a>
 
-### getui.pushSingle(message, template, cid, apnsInfo, [requestId]) ⇒ <code>Promise.&lt;object&gt;</code>
+### getui.pushSingle(message, template, cid, [apnsInfo], [requestId]) ⇒ <code>Promise.&lt;object&gt;</code>
 单推
 
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
@@ -116,14 +116,14 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | message | [<code>Message</code>](#Message) |  |
-| template | [<code>Notification</code>](#Notification) |  |
+| template | [<code>Notification</code>](#Notification) \| <code>null</code> |  |
 | cid | <code>string</code> | cid |
-| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
+| [apnsInfo] | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
 
 <a name="Getui+pushSingleAlias"></a>
 
-### getui.pushSingleAlias(message, template, alias, apnsInfo, [requestId]) ⇒ <code>Promise.&lt;object&gt;</code>
+### getui.pushSingleAlias(message, template, alias, [apnsInfo], [requestId]) ⇒ <code>Promise.&lt;object&gt;</code>
 单推给alias
 
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
@@ -132,14 +132,14 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | message | [<code>Message</code>](#Message) |  |
-| template | [<code>Notification</code>](#Notification) |  |
+| template | [<code>Notification</code>](#Notification) \| <code>null</code> |  |
 | alias | <code>string</code> | alias |
-| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
+| [apnsInfo] | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
 
 <a name="Getui+saveListBody"></a>
 
-### getui.saveListBody(message, template, apnsInfo, [taskName]) ⇒ <code>Promise</code>
+### getui.saveListBody(message, template, [apnsInfo], [taskName]) ⇒ <code>Promise</code>
 保存消息共同体
 
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
@@ -147,8 +147,8 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | message | [<code>Message</code>](#Message) |  |
-| template | [<code>Notification</code>](#Notification) |  |
-| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
+| template | [<code>Notification</code>](#Notification) \| <code>null</code> |  |
+| [apnsInfo] | [<code>APNsInfo</code>](#APNsInfo) | apns的json，ios需要 |
 | [taskName] | <code>string</code> | 任务名称 |
 
 <a name="Getui+toList"></a>
@@ -179,7 +179,7 @@
 
 <a name="Getui+pushApp"></a>
 
-### getui.pushApp(message, template, apnsInfo, [condition], [requestId]) ⇒ <code>Promise</code>
+### getui.pushApp(message, template, [apnsInfo], [condition], [requestId]) ⇒ <code>Promise</code>
 toapp群推
 
 **Kind**: instance method of [<code>Getui</code>](#Getui)  
@@ -187,8 +187,8 @@ toapp群推
 | Param | Type | Description |
 | --- | --- | --- |
 | message | [<code>Message</code>](#Message) |  |
-| template | [<code>Notification</code>](#Notification) |  |
-| apnsInfo | [<code>APNsInfo</code>](#APNsInfo) |  |
+| template | [<code>Notification</code>](#Notification) \| <code>null</code> |  |
+| [apnsInfo] | [<code>APNsInfo</code>](#APNsInfo) |  |
 | [condition] | [<code>Condition</code>](#Condition) | 筛选目标用户条件 |
 | [requestId] | <code>string</code> |  |
 
