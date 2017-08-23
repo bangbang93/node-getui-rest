@@ -12,7 +12,8 @@ const ms = require('ms')
  * @typedef {object} Message
  * @property {boolean} is_offline 是否存为离线消息
  * @property {number} offline_expire_time 离线时间
- * @property {string} msgtype 消息类型
+ * @property {number} push_network_type 选择推送消息使用网络类型，0：不限制，1：wifi
+ * @property {string} msgtype 消息应用类型，可选项：notification、link、notypopload、transmission
  */
 
 /**
@@ -30,6 +31,30 @@ const ms = require('ms')
  * @property {string} key 筛选条件类型名称(省市region,手机类型phonetype,用户标签tag)
  * @property {string} values 筛选参数
  * @property {string} opt_type 筛选参数的组合，0:取参数并集or，1：交集and，2：相当与not in {参数1，参数2，....}
+ */
+
+/**
+ * @typedef {object} APNsInfo
+ * @property {object} alert 消息
+ * @property {string} alert.body 通知文本消息
+ * @property {string} alert.action-loc-key （用于多语言支持）指定执行按钮所使用的Localizable.strings
+ * @property {string} alert.loc-key （用于多语言支持）指定Localizable.strings文件中相应的key
+ * @property {string[]} alert.loc-args 如果loc-key中使用了占位符，则在loc-args中指定各参数
+ * @property {string} alert.launch-image 指定启动界面图片名
+ * @property {string} alert.title 通知标题
+ * @property {string} alert.titile-loc-key (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本
+ * @property {string[]} alert.title-loc-args 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本
+ * @property {string} alert.subtitle 通知子标题,仅支持iOS8.2以上版本
+ * @property {string} alert.subtitle-loc-key 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本
+ * @property {string} alert.subtitle-loc-args 当前本地化子标题内容中需要置换的变量参数 ,仅支持iOS8.2以上版本
+ * @property {string} autoBadge 用于计算icon上显示的数字，还可以实现显示数字的自动增减，如“+1”、 “-1”、 “1” 等，计算结果将覆盖badge
+ * @property {string} sound 通知铃声文件名，无声设置为“com.gexin.ios.silence”
+ * @property {number} content-available 推送直接带有透传数据
+ * @property {string} category  在客户端通知栏触发特定的action和button显示
+ * @property {object[]} multimedia 多媒体
+ * @property {string} multimedia[].url 多媒体资源地址
+ * @property {number} multimedia[].type 资源类型（1.图片，2.音频， 3.视频）
+ * @property {boolean} [multimedia[].only_wifi] 是否只在wifi环境下加载，如果设置成true,但未使用wifi时，会展示成普通通知
  */
 
 /**
@@ -122,7 +147,7 @@ class Getui extends EventEmitter {
    * @param {Message} message
    * @param {Notification} template
    * @param {string} cid cid
-   * @param {string} apnsInfo apns的json，ios需要
+   * @param {APNsInfo} apnsInfo apns的json，ios需要
    * @param {string} [requestId] requestId
    * @returns {Promise<object>} 接口返回的json
    */
@@ -146,7 +171,7 @@ class Getui extends EventEmitter {
    * @param {Message} message
    * @param {Notification} template
    * @param {string} alias alias
-   * @param {string} apnsInfo apns的json，ios需要
+   * @param {APNsInfo} apnsInfo apns的json，ios需要
    * @param {string} [requestId] requestId
    * @returns {Promise<object>} 接口返回的json
    */
@@ -169,7 +194,7 @@ class Getui extends EventEmitter {
    * 保存消息共同体
    * @param {Message} message
    * @param {Notification} template
-   * @param {string} apnsInfo apns的json，ios需要
+   * @param {APNsInfo} apnsInfo apns的json，ios需要
    * @param {string} [taskName] 任务名称
    * @returns {Promise}
    */
@@ -218,7 +243,7 @@ class Getui extends EventEmitter {
    * toapp群推
    * @param {Message} message
    * @param {Notification} template
-   * @param {string} apnsInfo
+   * @param {APNsInfo} apnsInfo
    * @param {Condition} [condition] 筛选目标用户条件
    * @param {string} [requestId]
    * @returns {Promise}
