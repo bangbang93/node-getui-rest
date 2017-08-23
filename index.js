@@ -19,11 +19,18 @@ const ms = require('ms')
 /**
  * @typedef {object} Notification
  * @property {object} style 样式
- * @property {number} style.type 样式类型，0-原生，1-个推样式，4-纯图，6-展开通知
+ * @property {number} [style.type] 样式类型，0-原生，1-个推样式，4-纯图，6-展开通知
  * @property {string} style.text text
  * @property {string} style.title title
- * @property {boolean} transmission_type 是否透传
- * @property {string} transmission_content 透传内容
+ * @property {string} [style.logo] logo
+ * @property {string} [style.logourl] logoUrl
+ * @property {boolean} [style.is_ring} 是否响铃
+ * @property {boolean} [style.is_vibrate} 是否震动
+ * @property {boolean} [style.is_clearable} 是否可清除
+ * @property {string} [duration_begin] 设定展示开始时间，格式为yyyy-MM-dd HH:mm:ss
+ * @property {string} [duration_end] 设定展示结束时间，格式为yyyy-MM-dd HH:mm:ss
+ * @property {boolean} [transmission_type] 是否透传
+ * @property {string} [transmission_content] 透传内容
  */
 
 /**
