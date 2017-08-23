@@ -91,6 +91,7 @@
 
 - <code>Error</code> auth failed
 
+**Emits**: <code>Getui#event:ready</code>  
 <a name="Getui+unauth"></a>
 
 ### getui.unauth() ⇒ <code>Promise.&lt;void&gt;</code>
