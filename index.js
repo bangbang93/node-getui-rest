@@ -100,8 +100,8 @@ class Getui extends EventEmitter {
 
   /**
    * 单推
-   * @param {Message} message {@link Message}
-   * @param {Notification} template {@link Notification}
+   * @param {Message} message
+   * @param {Notification} template
    * @param {string} cid cid
    * @param {string} apnsInfo apns的json，ios需要
    * @param {string} [requestId] requestId
@@ -124,8 +124,8 @@ class Getui extends EventEmitter {
 
   /**
    * 单推给alias
-   * @param {Message} message {@link Message}
-   * @param {Notification} template {@link Notification}
+   * @param {Message} message
+   * @param {Notification} template
    * @param {string} alias alias
    * @param {string} apnsInfo apns的json，ios需要
    * @param {string} [requestId] requestId
@@ -148,13 +148,14 @@ class Getui extends EventEmitter {
 
   /**
    * 保存消息共同体
-   * @param {Message} message {@link Message}
-   * @param {Notification} template {@link Notification}
+   * @param {Message} message
+   * @param {Notification} template
    * @param {string} apnsInfo apns的json，ios需要
    * @param {string} [taskName] 任务名称
    * @returns {Promise}
    */
   saveListBody(message, template, apnsInfo, taskName) {
+    message.appkey = message.appkey || this._appKey
     const body = {
       message,
       push_info: apnsInfo,
@@ -196,14 +197,15 @@ class Getui extends EventEmitter {
 
   /**
    * toapp群推
-   * @param {Message} message {@link Message}
-   * @param {Notification} template {@link Notification}
+   * @param {Message} message
+   * @param {Notification} template
    * @param {string} apnsInfo
    * @param {object} [condition] 筛选目标用户条件，参考下面的condition说明
    * @param {string} [requestId]
    * @returns {Promise}
    */
   pushApp(message, template, apnsInfo, condition, requestId = getRequestId()) {
+    message.appkey = message.appkey || this._appKey
     const body = {
       message,
       push_info: apnsInfo,
@@ -229,10 +231,12 @@ class Getui extends EventEmitter {
    * @returns {Promise}
    */
   pushSingleBatch(msgList) {
+    msgList.forEach((msg) => {
+      msg.message.appkey = msg.message.appkey || this._appKey
+    })
     return this._http(`https://restapi.getui.com/v1/${this._appId}/push_single_batch`, {
       msg_list: msgList,
     })
-
   }
 
   /**

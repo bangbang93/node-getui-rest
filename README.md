@@ -109,8 +109,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | [<code>Message</code>](#Message) | [Message](#Message) |
-| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
+| message | [<code>Message</code>](#Message) |  |
+| template | [<code>Notification</code>](#Notification) |  |
 | cid | <code>string</code> | cid |
 | apnsInfo | <code>string</code> | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
@@ -125,8 +125,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | [<code>Message</code>](#Message) | [Message](#Message) |
-| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
+| message | [<code>Message</code>](#Message) |  |
+| template | [<code>Notification</code>](#Notification) |  |
 | alias | <code>string</code> | alias |
 | apnsInfo | <code>string</code> | apns的json，ios需要 |
 | [requestId] | <code>string</code> | requestId |
@@ -140,8 +140,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | [<code>Message</code>](#Message) | [Message](#Message) |
-| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
+| message | [<code>Message</code>](#Message) |  |
+| template | [<code>Notification</code>](#Notification) |  |
 | apnsInfo | <code>string</code> | apns的json，ios需要 |
 | [taskName] | <code>string</code> | 任务名称 |
 
@@ -180,8 +180,8 @@ toapp群推
 
 | Param | Type | Description |
 | --- | --- | --- |
-| message | [<code>Message</code>](#Message) | [Message](#Message) |
-| template | [<code>Notification</code>](#Notification) | [Notification](#Notification) |
+| message | [<code>Message</code>](#Message) |  |
+| template | [<code>Notification</code>](#Notification) |  |
 | apnsInfo | <code>string</code> |  |
 | [condition] | <code>object</code> | 筛选目标用户条件，参考下面的condition说明 |
 | [requestId] | <code>string</code> |  |
