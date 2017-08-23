@@ -34,7 +34,7 @@ const ms = require('ms')
  */
 
 /**
- * @typedef {object} Condition
+ * @typedef {object[]} Condition
  * @property {string} key 筛选条件类型名称(省市region,手机类型phonetype,用户标签tag)
  * @property {string} values 筛选参数
  * @property {string} opt_type 筛选参数的组合，0:取参数并集or，1：交集and，2：相当与not in {参数1，参数2，....}
@@ -208,7 +208,7 @@ class Getui extends EventEmitter {
       task_name: taskName
     }
     body[message['msgtype']] = template
-    return this._http(`https://restapi.getui.com/v1/${this._appId}/save_list_body`);
+    return this._http(`https://restapi.getui.com/v1/${this._appId}/save_list_body`, body);
   }
 
   /**
@@ -256,7 +256,7 @@ class Getui extends EventEmitter {
       message,
       push_info: apnsInfo,
       condition,
-      requestId,
+      requestid: requestId,
     }
     body[message['msgtype']] = template
     return this._http(`https://restapi.getui.com/v1/${this._appId}/push_app`, body)
@@ -279,6 +279,7 @@ class Getui extends EventEmitter {
   pushSingleBatch(msgList) {
     msgList.forEach((msg) => {
       msg.message.appkey = msg.message.appkey || this._appKey
+      msg.requestid = msg.requestid || getRequestId()
     })
     return this._http(`https://restapi.getui.com/v1/${this._appId}/push_single_batch`, {
       msg_list: msgList,
@@ -364,7 +365,7 @@ class Getui extends EventEmitter {
 
   /**
    * 添加用户黑名单
-   * @param {string} cid
+   * @param {string[]} cid
    * @returns {Promise}
    */
   userBlkListAdd(cid) {
@@ -375,7 +376,7 @@ class Getui extends EventEmitter {
 
   /**
    * 删除用户黑名单
-   * @param {string} cid
+   * @param {string[]} cid
    * @returns {Promise}
    */
   userBlkListDelete(cid) {
@@ -400,13 +401,13 @@ class Getui extends EventEmitter {
    */
   pushResult(taskIdList) {
     return this._http(`https://restapi.getui.com/v1/${this._appId}/push_result`, {
-      taskidlist: taskIdList,
+      taskIdList,
     })
   }
 
   /**
    * 获取单日用户数据
-   * @param {string} date yyyymmdd 20170823
+   * @param {string} date yyyymmdd 2017-08-23
    * @returns {Promise}
    */
   queryAppUser(date) {
@@ -415,7 +416,7 @@ class Getui extends EventEmitter {
 
   /**
    * 获取单日推送数据
-   * @param {string} date yyyymmdd 20170823
+   * @param {string} date yyyymmdd 2017-08-23
    * @returns {Promise}
    */
   queryAppPush(date) {
@@ -448,8 +449,8 @@ class Getui extends EventEmitter {
    * 获取24小时在线用户数
    * @returns {Promise}
    */
-  getLast24HoursOnlineUsreStatistics() {
-    return this._http(`https://restapi.getui.com/v1/${this._appId}/get_last_24hours_online_User_statistics`, null, 'post')
+  getLast24HoursOnlineUserStatistics() {
+    return this._http(`https://restapi.getui.com/v1/${this._appId}/get_last_24hours_online_User_statistics`, null, 'get')
   }
 
   /**
@@ -460,7 +461,7 @@ class Getui extends EventEmitter {
   queryUserCount(condition) {
     return this._http(`https://restapi.getui.com/v1/${this._appId}/query_user_count`, {
       condition
-    }, 'get')
+    })
   }
 
   /**
@@ -474,19 +475,21 @@ class Getui extends EventEmitter {
   /**
    * 获取回执的用户列表
    * @param {string} taskId
-   * @param {string} cids
+   * @param {string[]} cids
    * @returns {Promise}
    */
   getFeedbackUsers(taskId, cids) {
     return this._http(`https://restapi.getui.com/v1/${this._appId}/get_feedback_users`, {
-      taskId,
-      cids,
+      data: [{
+        taskId,
+        cids,
+      }]
     })
   }
 
   async _http(url, body, method = 'post') {
     await this.waitAuth()
-    if (method === 'post') {
+    if (method === 'post' || method === 'delete') {
       return rp({
         url,
         method,
@@ -501,13 +504,22 @@ class Getui extends EventEmitter {
       return rp({
         url,
         method,
-        query: body,
+        qs: body,
         json: true,
         headers: {
           authtoken: this._authToken,
           accept: '*'
         }
       })
+    }
+  }
+
+  async _setupTest() {
+    const http = this._http
+    this._http = async (...args) => {
+      const res = await http.apply(this, args)
+      console.log(res)
+      return res
     }
   }
 }
