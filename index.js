@@ -7,7 +7,10 @@ const rp = require('request-promise');
 const sha256 = require('./helper/hash').sha256
 const randomstring = require('randomstring')
 
-
+/**
+ * 个推RestAPI SDK
+ * @extends EventEmitter
+ */
 class Getui extends EventEmitter{
   /**
    * 初始化个推RestAPI
@@ -22,6 +25,10 @@ class Getui extends EventEmitter{
     this._masterSecret = masterSecret
   }
 
+  /**
+   *
+   * @returns {Promise}
+   */
   async waitAuth() {
     if (this._authToken) return;
     return new Promise((resolve) => {
