@@ -42,22 +42,23 @@ const ms = require('ms')
 
 /**
  * @typedef {object} APNsInfo
- * @property {object} alert 消息
- * @property {string} alert.body 通知文本消息
- * @property {string} [alert.action-loc-key] （用于多语言支持）指定执行按钮所使用的Localizable.strings
- * @property {string} [alert.loc-key] （用于多语言支持）指定Localizable.strings文件中相应的key
- * @property {string[]} [alert.loc-args] 如果loc-key中使用了占位符，则在loc-args中指定各参数
- * @property {string} [alert.launch-image] 指定启动界面图片名
- * @property {string} [alert.title] 通知标题
- * @property {string} [alert.titile-loc-key] (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本
- * @property {string[]} [alert.title-loc-args] 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本
- * @property {string} [alert.subtitle] 通知子标题,仅支持iOS8.2以上版本
- * @property {string} [alert.subtitle-loc-key] 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本
- * @property {string} [alert.subtitle-loc-args] 当前本地化子标题内容中需要置换的变量参数 ,仅支持iOS8.2以上版本
- * @property {string} [autoBadge] 用于计算icon上显示的数字，还可以实现显示数字的自动增减，如“+1”、 “-1”、 “1” 等，计算结果将覆盖badge
- * @property {string} [sound] 通知铃声文件名，无声设置为“com.gexin.ios.silence”
- * @property {number} [content-available] 推送直接带有透传数据
- * @property {string} [category]  在客户端通知栏触发特定的action和button显示
+ * @property {object} aps apple push service
+ * @property {object} aps.alert 消息
+ * @property {string} aps.alert.body 通知文本消息
+ * @property {string} [aps.alert.action-loc-key] （用于多语言支持）指定执行按钮所使用的Localizable.strings
+ * @property {string} [aps.alert.loc-key] （用于多语言支持）指定Localizable.strings文件中相应的key
+ * @property {string[]} [aps.alert.loc-args] 如果loc-key中使用了占位符，则在loc-args中指定各参数
+ * @property {string} [aps.alert.launch-image] 指定启动界面图片名
+ * @property {string} [aps.alert.title] 通知标题
+ * @property {string} [aps.alert.titile-loc-key] (用于多语言支持）对于标题指定执行按钮所使用的Localizable.strings,仅支持iOS8.2以上版本
+ * @property {string[]} [aps.alert.title-loc-args] 对于标题,如果loc-key中使用的占位符，则在loc-args中指定各参数,仅支持iOS8.2以上版本
+ * @property {string} [aps.alert.subtitle] 通知子标题,仅支持iOS8.2以上版本
+ * @property {string} [aps.alert.subtitle-loc-key] 当前本地化文件中的子标题字符串的关键字,仅支持iOS8.2以上版本
+ * @property {string} [aps.alert.subtitle-loc-args] 当前本地化子标题内容中需要置换的变量参数 ,仅支持iOS8.2以上版本
+ * @property {string} [aps.autoBadge] 用于计算icon上显示的数字，还可以实现显示数字的自动增减，如“+1”、 “-1”、 “1” 等，计算结果将覆盖badge
+ * @property {string} [aps.sound] 通知铃声文件名，无声设置为“com.gexin.ios.silence”
+ * @property {number} [aps.content-available] 推送直接带有透传数据
+ * @property {string} [aps.category]  在客户端通知栏触发特定的action和button显示
  * @property {object[]} [multimedia] 多媒体
  * @property {string} multimedia[].url 多媒体资源地址
  * @property {number} multimedia[].type 资源类型（1.图片，2.音频， 3.视频）
