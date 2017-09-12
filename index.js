@@ -104,7 +104,7 @@ class Getui extends EventEmitter {
   async waitAuth() {
     if (this._authToken) return;
     return new Promise((resolve) => {
-      this.on('ready', resolve)
+      this.once('ready', resolve)
     })
   }
 
