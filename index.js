@@ -133,10 +133,12 @@ class Getui extends EventEmitter {
     }
     this._authToken = res['auth_token']
     this.emit('ready')
-    if (this._interval) setInterval(async () => {
-      await this.auth()
-      this.emit('refresh-token')
-    },  ms(this._interval))
+    if (this._interval && !this._timer) {
+      this._timer = setInterval(async () => {
+        await this.auth()
+        this.emit('refresh-token')
+      },  ms(this._interval))
+    }
   }
 
   /**
